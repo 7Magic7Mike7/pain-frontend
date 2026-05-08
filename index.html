@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <!-- Original PPP frontend (earth topology / bump reference): https://github.com/7Magic7Mike7/pain-website -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PAIN — Globe prototype</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="theme-bar">
+        <button
+          type="button"
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-pressed="false"
+          title="Switch color theme"
+        >
+          Blue mode
+        </button>
+      </div>
+      <canvas id="globe"></canvas>
+      <aside id="hud" aria-label="Controls">
+        <h1>PAIN prototype</h1>
+        <label>
+          Layer
+          <select id="layer-select"></select>
+        </label>
+        <label>
+          Globe surface
+          <select
+            id="globe-render-mode"
+            title="Stipple mode only for now"
+            disabled
+          >
+            <!-- Texture mode parked for now:
+            <option value="texture">Noise texture (canvas)</option>
+            -->
+            <option value="points">Point stipple (land mask)</option>
+          </select>
+        </label>
+        <label>
+          Pain data
+          <select
+            id="pain-viz-mode"
+            title="Markers on the surface, or inward dents from the same points (texture + stipple)"
+          >
+            <option value="points">Point markers</option>
+            <option value="scars" selected>Scar dents (topology)</option>
+            <option value="multiplex-v0">Multiplex v0 (experimental)</option>
+          </select>
+        </label>
+        <p class="hint">Drag to orbit · scroll to zoom</p>
+        <div class="row">
+          <button type="button" id="refresh-points">Refresh points</button>
+          <button type="button" id="test-post">Test POST</button>
+          <button type="button" id="word-cloud-toggle" class="word-cloud-toggle">
+            Word clouds: Off
+          </button>
+        </div>
+        <p id="status" class="status"></p>
+      </aside>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
